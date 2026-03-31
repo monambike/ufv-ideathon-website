@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MATH.IA - Chat</title>
+    <link rel="stylesheet" href="css\style.css"> 
+</head>
+
+<body>
+
+    <header class="topo">
+        <div class="logo-area">
+            <div class="logo-mini">MATH.IA</div>
+            <div class="desc">Assistente inteligente de matemática</div>
+        </div>
+
+        <div class="menu">
+            <button onclick="abrirMenu()">⋮</button>
+            <div class="dropdown" id="dropdown">
+                <p>Suporte</p>
+                <p>Sobre</p>
+                <p>Sair</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="chat-container">
+        <div class="chat-box" id="chat">
+            <div class="bot">
+                Olá estudante, <br>
+                Como posso ajudar?
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" id="mensagem" placeholder="Digite sua dúvida matemática...">
+            <button onclick="enviar()">Enviar</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

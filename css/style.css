@@ -1,0 +1,298 @@
+
+body{
+    margin:0;
+    font-family:system-ui;
+    background:oklab(18.004% 0.00315 0.00097);
+    color:hwb(0 100% 0%);
+    overflow:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:200%;
+    height:200%;
+    background:linear-gradient( 45deg, #00f2ff, #2563eb, #7c3aed, #00f2ff );
+    animation:fundo 12s linear infinite;
+    opacity:.12;
+    z-index:0;
+}
+
+@keyframes fundo{
+    0%{ transform:translate(-20%,-20%) rotate(0deg); }
+    100%{ transform:translate(-20%,-20%) rotate(360deg); }
+}
+
+
+.layout{
+    display:flex;
+    height:100vh;
+    align-items:center;
+    justify-content:space-around;
+    position:relative;
+    z-index:1;
+    padding:40px;
+}
+
+
+.lado-esquerdo{
+    max-width:450px;
+    animation:slide 1s ease;
+}
+
+.logo{
+    font-size:90px;
+    margin:0;
+    background:linear-gradient( 90deg, #00f2ff, #2563eb, #7c3aed );
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:brilho 3s infinite alternate;
+}
+
+.slogan{
+    opacity:.7;
+    font-size:22px;
+    margin-top:10px;
+}
+
+
+.card{
+    background:lab(32.98% 14.96 -38.69 / 0.945);
+    backdrop-filter:blur(15px);
+    padding:40px;
+    border-radius:16px;
+    box-shadow: 0 0 20px rgba(0,242,255,.2), 0 0 40px rgba(201, 196, 209, 0.2);
+    width:320px;
+    animation:aparecer 1s ease;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(0,0,0,.6);
+    color:white;
+    transition:.3s;
+}
+
+input:focus{
+    border:1px solid #00f2ff;
+    box-shadow:0 0 10px #00f2ff;
+    outline:none;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:linear-gradient( 90deg, #2563eb, #7c3aed );
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    box-shadow: 0 0 15px #2563eb, 0 0 30px #7c3aed;
+}
+
+@keyframes aparecer{
+    from{ opacity:0; transform:translateY(40px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes slide{
+    from{ opacity:0; transform:translateX(-50px); }
+    to{ opacity:1; transform:translateX(0); }
+}
+
+@keyframes brilho{
+    from{ filter:brightness(1); }
+    to{ filter:brightness(1.6); }
+}
+
+@keyframes msg{
+    from{ opacity:0; transform:translateY(15px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+
+.chat-container{
+    width:100vw;       
+    height:100vh;       
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding:0;          
+}
+
+.chat-box{
+    flex:1;            
+    overflow-y:auto;   
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:5px;
+}
+.bot{
+    background:rgba(0,242,255,.15);
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:10px;
+    animation:msg .4s ease;
+}
+
+.user{
+    background:lab(5.56% 2.29 0.18);
+    color:white;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:10px;
+    text-align:right;
+    animation:msg .4s ease;
+}
+.chat-input button {
+    flex: 0 0 auto;       
+    padding: 10px 16px;   
+    border-radius: 10px;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    color: white;
+    cursor: pointer;
+    transition: .3s;
+    width: auto;          
+}
+
+.chat-input button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #2563eb, 0 0 20px #7c3aed;
+}
+
+body{
+    background:black;
+    color:white;
+    overflow:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: radial-gradient(circle at 20% 30%, #00f2ff22 0%, transparent 40%), radial-gradient(circle at 80% 70%, #7c3aed22 0%, transparent 40%), radial-gradient(circle at 50% 50%, #2563eb22 0%, transparent 40%);
+    animation:movimento 12s infinite alternate;
+    z-index:-1;
+}
+
+@keyframes movimento{
+    0%{ transform:translateY(0px) translateX(0px); }
+    100%{ transform:translateY(-40px) translateX(20px); }
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-image: linear-gradient(#00f2ff11 1px, transparent 1px), linear-gradient(90deg, #00f2ff11 1px, transparent 1px);
+    background-size:40px 40px;
+    animation:gridMove 20s linear infinite;
+    z-index:-1;
+}
+
+@keyframes gridMove{
+    from{ transform:translateY(0); }
+    to{ transform:translateY(40px); }
+}
+
+.topo{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 25px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo-mini{
+    font-weight:bold;
+    font-size:20px;
+    background:linear-gradient( 90deg, #00f2ff, #7c3aed );
+    background-clip:text;
+    -webkit-background-clip:text;
+    color:transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.desc{ font-size:12px; opacity:.6; }
+.logo-area{ display:flex; flex-direction:column; }
+
+.menu{ position:relative; }
+.menu button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.dropdown{
+    position:absolute;
+    right:0;
+    top:30px;
+    background:#111;
+    padding:10px;
+    border-radius:10px;
+    display:none;
+    flex-direction:column;
+    gap:8px;
+    box-shadow:0 0 15px rgba(0,0,0,.5);
+}
+
+.dropdown p{
+    margin:0;
+    cursor:pointer;
+    padding:6px 12px;
+    border-radius:6px;
+}
+
+.dropdown p:hover{ background:#2563eb; }
+
+.chat-container{
+    height:calc(100vh - 70px);
+    display:flex;
+    flex-direction:column;
+    padding:20px;
+    gap:10px;
+}
+
+.chat-box{
+    flex:1;
+    overflow:auto;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.chat-input{
+    display:flex;
+    gap:10px;
+    padding:15px;
+    border-top:1px solid rgba(255,255,255,.08);
+    background:rgba(0,0,0,.7);
+    backdrop-filter:blur(10px);
+}
+
+.chat-input input{
+    flex:1;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(0,0,0,.6);
+    color:white;
+}
