@@ -1,4 +1,4 @@
 <?php
-    $FILE_PATH = "..\log\message_log.csv"
-    $USERS_PATH = "..\log\users.csv"
+    $FILE_PATH = "../data/message_log.csv";
+    $USERS_PATH = "../data/users.csv";
 ?>

@@ -1,21 +1,26 @@
 <html>
-  <html>
-        <style>
-            .msg-user { background-color: black; color: white; }
-            .msg-ai { background-color: gray; color: white; }
+  <head>
+      <meta charset="utf-8"/>
+      <style>
+          .msg-user { background-color: black; color: white; }
+          .msg-ai { background-color: gray; color: white; }
 
-            .chat--box {
-              background: gray;
-              height: 90%;
-            }
-        </style>
-  </html>
+          .chat--box {
+            background: gray;
+            height: 90%;
+            white-space: pre-line;
+          }
+      </style>
+  </head>
   <body>
       <div id="chat--box" class="chat--box">
       </div>
-      <form>
-          <input id="chat--input" type="text"/>
-          <input id="chat--button" type="button"/>
+      <form method="post" action="php/chat_send.php">
+          <input id="chat--input" name="message" type="text" pattern="[^<>]+" title="Não é permitido inserir '<' ou '>'."/>
+          <input id="chat--button" type="submit" value=">"/>
       </form>
+
+      <script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+      <script type="text/javascript" src="../js/chat.js" async></script>
   </body>
 </html>

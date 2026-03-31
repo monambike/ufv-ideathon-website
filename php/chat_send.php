@@ -1,9 +1,12 @@
 <?php  
-    include("config.php")
+    include("config.php");
 
-    $input = htmlentities($_POST["login"]);
+    $input = "\n" . "user;" .htmlentities($_POST["message"]);
 
-    $msg = "test1;test2;test3;" + new DateTime();
+    file_put_contents($FILE_PATH, $input, FILE_APPEND);
 
-    file_put_contents($FILE_PATH, $msg, FILE_APPEND);
+		echo
+		'<script>
+			window.open("../index.html", "_self");
+		</script>';
 ?>

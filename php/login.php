@@ -1,10 +1,10 @@
 <?php
-    include("config.php")
+    include("config.php");
 
     $name = htmlentities($_POST["login--name"]);
     $email = htmlentities($_POST["login--email"]);
     $institution = htmlentities($_POST["login--institution"]);
-    
+
     $GUID = generateGUID()
     $current_time = new DateTime()
 
