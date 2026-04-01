@@ -144,7 +144,6 @@ button:hover{
     padding:10px;
     border-radius:8px;
     margin-bottom:10px;
-    animation:msg .4s ease;
 }
 
 .user{
@@ -154,7 +153,6 @@ button:hover{
     border-radius:8px;
     margin-bottom:10px;
     text-align:right;
-    animation:msg .4s ease;
 }
 .chat-input button {
     flex: 0 0 auto;       

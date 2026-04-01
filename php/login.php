@@ -1,18 +1,20 @@
 <?php
     include("config.php");
+    include("utils.php");
 
-    $name = htmlentities($_POST["login--name"]);
-    $email = htmlentities($_POST["login--email"]);
-    $institution = htmlentities($_POST["login--institution"]);
+    $name = htmlentities($_POST["name"]);
+    $email = htmlentities($_POST["email"]);
+    $institution = htmlentities($_POST["institution"]);
 
-    $GUID = generateGUID()
-    $current_time = new DateTime()
+    $GUID = generateGUID();
+    $current_time = date("Y-m-d H:i:s");
 
-    $msg = "{$GUID};{$name};{$email};{$institution};{$current_time};";
+    $login = "{$GUID};{$current_time};{$institution};{$name};{$email};\n";
 
-    file_put_contents($FILE_PATH, $msg, FILE_APPEND)
+    file_put_contents($USERS_CSV_FILE_PATH, $login, FILE_APPEND);
 
-    function generateGUID() {
-        return bin2hex(random_bytes(16));
-    }
+    echo
+    '<script>
+      window.open("../chat.html", "_self");
+    </script>';
 ?>

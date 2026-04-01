@@ -1,12 +1,16 @@
 <?php  
     include("config.php");
+    include("utils.php");
 
-    $input = "\n" . "user;" .htmlentities($_POST["message"]);
+    $GUID = generateGUID();
+    $current_time = date("Y-m-d H:i:s");
 
-    file_put_contents($FILE_PATH, $input, FILE_APPEND);
+    $input = "{$GUID};{$current_time};user;" .htmlentities($_POST["message"]) . ";\n";
 
-		echo
-		'<script>
-			window.open("../index.html", "_self");
-		</script>';
+    file_put_contents($MESSAGES_CSV_FILE_PATH, $input, FILE_APPEND);
+
+    echo
+    '<script>
+      window.open("../chat.html", "_self");
+    </script>';
 ?>

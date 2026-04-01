@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>MATH.IA - Chat</title>
     <link rel="stylesheet" href="css\style.css"> 
+    <script type="text/javascript" src="js\jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="js\chat.js" async></script>
 </head>
 
 <body>
@@ -26,17 +28,19 @@
     </header>
 
     <div class="chat-container">
-        <div class="chat-box" id="chat">
+        <div class="chat-box" id="chat-box">
             <div class="bot">
                 Olá estudante, <br>
                 Como posso ajudar?
             </div>
         </div>
 
-        <div class="chat-input">
-            <input type="text" id="mensagem" placeholder="Digite sua dúvida matemática...">
-            <button onclick="enviar()">Enviar</button>
-        </div>
+        <form action="php/chat_send.php" method="POST">
+          <div id="chat-input" class="chat-input">
+              <input type="text" id="chat-input-text" name="message" placeholder="Digite sua dúvida matemática..." required pattern="*\S+.*">
+              <button id="chat-input-button" onclick="enviarMensagem()" type="submit">Enviar</button>
+          </div>
+        </form>
     </div>
 
 </body>
