@@ -8,7 +8,7 @@ export default class ChatBot {
     var rowItems = await this.getLastMessage();
     var userInput = rowItems[3];
 
-    if (rowItems === undefined || rowItems[2] == "bot") return;
+    if (!rowItems || rowItems[2] == "bot") return;
 
     if (lastBotMessage !== undefined){
       lastBotMessage = TextFormatting.normalizeText(lastBotMessage);
@@ -48,6 +48,8 @@ export default class ChatBot {
     fetch(Config.$CHAT_LOG_FILE_PATH)
       .then((res) => res.text())
       .then((text) => {
+          if (!text) return null;
+
           var data = text.split("\n").filter(n => n);
           var lastBotMessage = data[data.length - 1];
           
@@ -95,6 +97,7 @@ export default class ChatBot {
     var optionPrime = ["limpar chat", "limpar"]
     if (optionPrime.includes(userInput)) {
       this.clearMessageFile();
+      return;
     }
 
     var responses = [
