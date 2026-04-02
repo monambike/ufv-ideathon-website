@@ -13,6 +13,11 @@ export default class TextFormatting {
   }
 
   static removeDoubleQuotes(str) {
-    return str.replace(/[]+/g, '')
+    return str.replace(/['"]+/g, '')
+  }
+
+  static decodeHtmlEntities(str) {
+    const parser = new DOMParser();
+    return parser.parseFromString(str, 'text/html').documentElement.textContent;
   }
 }

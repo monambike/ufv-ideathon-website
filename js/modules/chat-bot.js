@@ -8,28 +8,17 @@ export default class ChatBot {
     var rowItems = await this.getLastMessage();
     var userInput = rowItems[3];
 
-    if (rowItems === undefined || rowItems[2] == "bot") return
+    if (rowItems === undefined || rowItems[2] == "bot") return;
 
     if (lastBotMessage !== undefined){
-      var normalizedLastBotMessage = TextFormatting.normalizeText(lastBotMessage);
+      lastBotMessage = TextFormatting.normalizeText(lastBotMessage);
     }
 
-    var normalizedUserInput = TextFormatting.normalizeText(userInput);
-
-    var optionExit = ["sair", "parar"]
-    if (normalizedLastBotMessage === undefined || optionExit.includes(normalizedUserInput)) {
-      await this.sendBotMessage("Olá estudante, Como posso ajudar?");
-      return;
-    }
-
-    var optionPrime = ["identificar primos", "numeros primos", "numero primo", "primo", "primos"]
-    if (optionPrime.includes(normalizedUserInput)) {
-      slidePrimeNumbers = 'https://www.canva.com/design/DAGN8k2HU6s/N0-BSoZnXVZIxEUWa1CrPA/edit?utm_content=DAGN8k2HU6s&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton';
-      window.open(slidePrimeNumbers, '_blank');
-      return;
-    }
-
-    await this.sendBotMessage("Não entendi, tente enviar algum comando disponível.");
+    userInput = TextFormatting.removeDoubleQuotes(userInput);
+    userInput = TextFormatting.decodeHtmlEntities(userInput);
+    userInput = TextFormatting.normalizeText(userInput);
+    
+    this.chooseBotResponse(userInput, lastBotMessage);
   }
 
   static async getLastMessage() {
@@ -38,9 +27,12 @@ export default class ChatBot {
       const text = await res.text();
 
       const data = text.split("\n").filter(n => n);
-      const lastMessage = data[data.length - 1];
+      
+      var lastMessage = data[data.length - 1];
 
-      const rowItems = lastMessage.split(";").filter(n => n);
+      lastMessage = TextFormatting.returnCsvAsArray(lastMessage);
+
+      const rowItems = lastMessage.filter(n => n);
 
       return rowItems; // <-- agora sim retorna pra quem chamou
     } catch (e) {
@@ -57,9 +49,9 @@ export default class ChatBot {
       .then((res) => res.text())
       .then((text) => {
           var data = text.split("\n").filter(n => n);
-          var lastBotMessage = data[data.length - 2];
+          var lastBotMessage = data[data.length - 1];
           
-          const rowItems = lastBotMessage.split(";");
+          var rowItems = TextFormatting.returnCsvAsArray(lastBotMessage);
 
           // Getting only the message content
           var lastMessage = rowItems[3];
@@ -81,5 +73,44 @@ export default class ChatBot {
     }).then(res => {
       console.log("Message has been sent. response:", res);
     });
+  }
+
+  static async chooseBotResponse(userInput) {
+    var optionExit = ["sair", "parar", "voltar", "menu", "home", "inicio"]
+    if (optionExit.includes(userInput)) {
+      await this.sendBotMessage("Olá estudante, Como posso ajudar?");
+      return;
+    }
+
+    var optionPrime = ["identificar primos", "numeros primos", "numero primo", "primo", "primos"]
+    if (optionPrime.includes(userInput)) {
+      var slidePrimeNumbers = 'https://www.canva.com/design/DAGN8k2HU6s/N0-BSoZnXVZIxEUWa1CrPA/edit?utm_content=DAGN8k2HU6s&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton';
+
+      await this.sendBotMessage(`Vou te enviar os slides para aprender sobre numeros primos! (Link: ${slidePrimeNumbers})`)
+      window.open(slidePrimeNumbers, '_blank');
+
+      return;
+    }
+
+    var optionPrime = ["limpar chat", "limpar"]
+    if (optionPrime.includes(userInput)) {
+      this.clearMessageFile();
+    }
+
+    var responses = [
+      "Não entendi, tente enviar algum comando disponível.",
+      "Não consegui entender esse comando, tente um disponível.",
+      "Tente algum comando existente.",
+      "Não consegui entender.",
+      "Esse comando não está disponível."
+    ]
+    const randomElement = responses[Math.floor(Math.random() * responses.length)];
+    await this.sendBotMessage(randomElement);
+  }
+
+  static clearMessageFile() {
+    fetch("../../php/clear-messages.php")
+      .then(res => res.text())
+      .then(console.log);
   }
 }

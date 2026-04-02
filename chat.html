@@ -39,7 +39,7 @@
         <form action="php/chat-send.php" method="POST">
           <div id="chat-input" class="chat-input">
               <input type="hidden" name="sender" id="chat-sender" value="user">
-              <input type="text" id="chat-input-text" name="message" placeholder="Digite sua dúvida matemática..." required pattern="*\S+.*">
+              <input type="text" id="chat-input-text" name="message" placeholder="Digite sua dúvida matemática..." pattern=".*\S+.*" required autofocus>
               <button id="chat-input-button" onclick="enviarMensagem()" type="submit">Enviar</button>
           </div>
         </form>
