@@ -1,4 +1,6 @@
+import ChatBot from "./chat-bot.js";
 import Config from "./../config/configs.js"
+import TextFormatting from "../utils/text-formatting.js";
 
 $(document).ready(function(){
   const $chatBox = $("#chat-box");
@@ -11,7 +13,7 @@ $(document).ready(function(){
    * Handles the click send message event for the chat input button.
    */
   function handleOnClickSendMessage(){
-    refreshChatLog();
+    // refreshChatLog();
   }
 
   /**
@@ -34,6 +36,8 @@ $(document).ready(function(){
         scrollChatToBottom(scrollHeight);
       },
     });
+
+    ChatBot.requestBotResponse();
   }
 
   /**
@@ -65,7 +69,7 @@ $(document).ready(function(){
     var data = html.split("\n").filter(n => n);
 
     for(let row of data) {
-      const rowItems = row.split(";");
+      const rowItems = TextFormatting.returnCsvAsArray(row);
 
       // Getting only the sender (user or bot) and the message content
       var senderMessageCsv = `${rowItems[2]};${rowItems[3]}`;
@@ -92,38 +96,6 @@ $(document).ready(function(){
     if(newHeight > previousScrollHeight) {
       $chatBox.animate({ scrollTop: newHeight }, 'normal');
     }
-  }
-
-  /**
-   * Retrieves the last bot message in CSV message data file.
-   */
-  function retrieveLastBotMessage() {
-    fetch(Config.$CHAT_LOG_FILE_PATH)
-      .then((res) => res.text())
-      .then((text) => {
-          var data = text.split("\n").filter(n => n);
-
-          var lastBotMessage = data[data.length - 2];
-          
-          const rowItems = row.split(";");
-
-          // Getting only the the message content
-          var lastMessage = rowItems[3];
-          return lastMessage;
-      })
-      .catch((e) => console.error(e));
-  }
-
-  function sendBotMessage() {
-    let data = {element: "barium"};
-
-    fetch("../../php/chat-send.php", {
-      method: "POST",
-      headers: {'Content-Type': 'application/json'}, 
-      body: JSON.stringify(data)
-    }).then(res => {
-      console.log("Message has been sent. response:", res);
-    });
   }
 
   setInterval(refreshChatLog, 500);
