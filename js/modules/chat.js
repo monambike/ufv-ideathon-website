@@ -17,13 +17,13 @@ $(document).ready(function(){
   /**
    * Updates the ChatBox without reloading the page using Ajax.
    */
-  function refreshChatLog(){
+  function refreshChatLog() {
     var scrollHeight = $chatBox.prop("scrollHeight");
 
     $.ajax({
       url: Config.$CHAT_LOG_FILE_PATH,
       cache: false,
-      success: function(html){
+      success: function(html) {
         // Converting whole chat csv to html
         var fullChatBox = convertChatCsvToHtml(html);
 
@@ -60,7 +60,7 @@ $(document).ready(function(){
    * @param {*} html The ChatBox content to be converted as HTML.
    * @returns The converted chat content as HTML.
    */
-  function convertChatCsvToHtml(html){
+  function convertChatCsvToHtml(html) {
     var fullChatBox = "";
     var data = html.split("\n").filter(n => n);
 
@@ -83,13 +83,13 @@ $(document).ready(function(){
    * Scrolls the ChatBox to the bottom using the previous height.
    * @param {*} previousScrollHeight Previous scroll height before any change is made to the ChatBox.
    */
-  function scrollChatToBottom(previousScrollHeight){
+  function scrollChatToBottom(previousScrollHeight) {
     // Retrieving how much will necessary to scroll to the top after
     // loading the data
     var newHeight = $chatBox.prop("scrollHeight");
 
     // Scrolls to the necessary amount
-    if(newHeight > previousScrollHeight){
+    if(newHeight > previousScrollHeight) {
       $chatBox.animate({ scrollTop: newHeight }, 'normal');
     }
   }
@@ -97,7 +97,7 @@ $(document).ready(function(){
   /**
    * Retrieves the last bot message in CSV message data file.
    */
-  function retrieveLastBotMessage(){
+  function retrieveLastBotMessage() {
     fetch(Config.$CHAT_LOG_FILE_PATH)
       .then((res) => res.text())
       .then((text) => {
@@ -112,6 +112,18 @@ $(document).ready(function(){
           return lastMessage;
       })
       .catch((e) => console.error(e));
+  }
+
+  function sendBotMessage() {
+    let data = {element: "barium"};
+
+    fetch("../../php/chat-send.php", {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'}, 
+      body: JSON.stringify(data)
+    }).then(res => {
+      console.log("Message has been sent. response:", res);
+    });
   }
 
   setInterval(refreshChatLog, 500);
