@@ -7,7 +7,7 @@
     $institution = htmlentities($_POST["institution"]);
 
     $GUID = generateGUID();
-    $current_time = date("Y-m-d H:i:s");
+    $current_time = getTimeNow();
 
     $login = "{$GUID};{$current_time};{$institution};{$name};{$email};\n";
 

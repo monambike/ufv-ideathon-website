@@ -3,7 +3,7 @@
     include("utils.php");
 
     $GUID = generateGUID();
-    $current_time = date("Y-m-d H:i:s");
+    $current_time = getTimeNow();
 
     $input = "{$GUID};{$current_time};user;" .htmlentities($_POST["message"]) . ";\n";
 
