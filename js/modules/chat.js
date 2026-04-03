@@ -24,7 +24,7 @@ $(document).ready(function(){
 
     $.ajax({
       url: Config.$CHAT_LOG_FILE_PATH,
-      cache: true,
+      cache: false,
       success: function(html) {
         // Converting whole chat csv to html
         var fullChatBox = convertChatCsvToHtml(html);
