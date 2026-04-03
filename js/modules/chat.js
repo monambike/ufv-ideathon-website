@@ -17,7 +17,7 @@ $(document).ready(function(){
   }
 
   /**
-   * Updates the ChatBox without reloading the page using Ajax.
+   * Updates the ChatBox without reloading the page using AJAX.
    */
   function refreshChatLog() {
     var scrollHeight = $chatBox.prop("scrollHeight");
