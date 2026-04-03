@@ -1,6 +1,6 @@
 # UFV Ideathon Website
 
-A mathematic assistant for helping institutions with their students at learning math.
+A mathematic assistant for helping institutions with their students at learning math. Made for Ideathon 2026 for UFV.
 
 <img width="1919" height="1079" alt="Screenshot 2026-04-02 214418" src="https://github.com/user-attachments/assets/a2b31069-6300-4f96-a0bc-e4e7af1dffc4" />
 
