@@ -13,22 +13,26 @@ export default class TextFormatting {
     return this.removeAccents(str.toLowerCase());
   }
 
+  static removeDoubleQuotes(str) {
+    return str.replace(/['"]+/g, '')
+  }
+
+  static decodeHtmlEntitiesToText(str) {
+    const parser = new DOMParser();
+    return parser.parseFromString(str, 'text/html').documentElement.textContent;
+  }
+
+  static decodeHtmlEntitiesToHtml(str) {
+    var result = $('<textarea />').html(str).text();
+    return result;
+  }
+
   static returnCsvAsArray(csv) {
     return csv.match(/(".*?"|[^;]+)(?=;|$)/g)
               .map(c => c.replace(/^"|"$/g, '')); 
   }
 
-  static removeDoubleQuotes(str) {
-    return str.replace(/['"]+/g, '')
-  }
-
-  static decodeHtmlEntities(str) {
-    const parser = new DOMParser();
-    return parser.parseFromString(str, 'text/html').documentElement.textContent;
-  }
-
-  static decode(str) {
-    var result = $('<textarea />').html(str).text();
-    return result;
+  static convertToLinkInHtml(link, displayText) {
+    return `<a href=\'${link}' target="_blank" rel="noopener noreferrer">${displayText}</a>`;
   }
 }

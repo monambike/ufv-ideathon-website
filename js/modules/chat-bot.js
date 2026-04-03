@@ -9,10 +9,10 @@ import Config from "./../config/configs.js"
 import TextFormatting from "./../utils/text-formatting.js";
 
 export default class ChatBot {
-  static async requestBotResponse() {
+  static async requestBotResponseAsync() {
     var lastBotMessage = this.getLastBotMessage();
 
-    var rowItems = await this.getLastMessage();
+    var rowItems = await this.getLastMessageAsync();
     var userInput = rowItems[3];
 
     if (!rowItems || rowItems[2] == "bot") return;
@@ -22,13 +22,13 @@ export default class ChatBot {
     }
 
     userInput = TextFormatting.removeDoubleQuotes(userInput);
-    userInput = TextFormatting.decodeHtmlEntities(userInput);
+    userInput = TextFormatting.decodeHtmlEntitiesToText(userInput);
     userInput = TextFormatting.normalizeText(userInput);
     
-    this.chooseBotResponse(userInput, lastBotMessage);
+    this.botResponseAsync(userInput, lastBotMessage);
   }
 
-  static async getLastMessage() {
+  static async getLastMessageAsync() {
     try {
       const res = await fetch(Config.$CHAT_LOG_FILE_PATH);
       const text = await res.text();
@@ -70,7 +70,7 @@ export default class ChatBot {
       .catch((e) => console.error(e));
   }
 
-  static async sendBotMessage(messageContent) {
+  static async sendBotMessageAsync(messageContent) {
     messageContent = `${messageContent}`;
 
     let data = {sender: "bot", message: messageContent};
@@ -84,20 +84,20 @@ export default class ChatBot {
     });
   }
 
-  static async chooseBotResponse(userInput) {
-    if (await this.chooseBotResponseTalk(userInput)) return true;
+  static async botResponseAsync(userInput) {
+    if (await this.botResponseTalkAsync(userInput)) return true;
 
     if (ChatBotRequest.systemClearChat(userInput)) return;
 
-    ChatBotRequest.systemCommandNotFound();
+    ChatBotRequest.systemCommandNotFoundAsync();
   }
 
-  static async chooseBotResponseTalk(userInput) {
-    if (await ChatBotRequest.talkHello(userInput)) return true;
+  static async botResponseTalkAsync(userInput) {
+    if (await ChatBotRequest.talkHelloAsync(userInput)) return true;
 
-    if (await ChatBotRequest.talkThankYou(userInput)) return true;
+    if (await ChatBotRequest.talkThankYouAsync(userInput)) return true;
 
-    if (await ChatBotRequest.learnPrimeNumbers(userInput)) return true;
+    if (await ChatBotRequest.learnPrimeNumbersAsync(userInput)) return true;
     
     return false;
   }

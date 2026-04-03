@@ -25,7 +25,7 @@ $(document).ready(function(){
   /**
    * Updates the ChatBox without reloading the page using AJAX.
    */
-  async function refreshChatLog() {
+  async function refreshChatLogAsync() {
     var scrollHeight = $chatBox.prop("scrollHeight");
 
     $.ajax({
@@ -35,7 +35,7 @@ $(document).ready(function(){
         // Converting whole chat csv to html
         var fullChatBox = convertChatCsvToHtml(html);
 
-        fullChatBox = TextFormatting.decode(fullChatBox);
+        fullChatBox = TextFormatting.decodeHtmlEntitiesToHtml(fullChatBox);
         // Inserting the message log into the chatbox
         $chatBox.html(fullChatBox);
 
@@ -43,7 +43,7 @@ $(document).ready(function(){
         scrollChatToBottom(scrollHeight);
       },
     });
-    await ChatBot.requestBotResponse();
+    await ChatBot.requestBotResponseAsync();
   }
 
   /**
@@ -104,5 +104,5 @@ $(document).ready(function(){
     }
   }
 
-  setInterval(refreshChatLog, 200);
+  setInterval(refreshChatLogAsync, 200);
 });
