@@ -8,9 +8,9 @@ A mathematic assistant for helping institutions with their students at learning 
 
 # Project Members
 
-- **Vinícius Gabriel** – Backend Developer
+- **Vinícius Gabriel Marques de Melo** – Backend Developer
 - **Davi Atayde** – Python Developer
-- **Maria Eduarda Neves** – Web Designer
+- **Maria Eduarda Neves de Souza** – Web Designer
 
 # Contact
 
