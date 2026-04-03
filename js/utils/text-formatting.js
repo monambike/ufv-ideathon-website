@@ -20,4 +20,9 @@ export default class TextFormatting {
     const parser = new DOMParser();
     return parser.parseFromString(str, 'text/html').documentElement.textContent;
   }
+
+  static decode(str) {
+    var result = $('<textarea />').html(str).text();
+    return result;
+  }
 }

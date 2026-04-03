@@ -1,8 +1,11 @@
 <?php
-    include("config.php");
-    include("utils.php");
+    require_once("config.php");
+    require_once("utils.php");
 
-    $message = "Olá estudante,<br> Como posso ajudar?";
+    $lastLineCsv = getLastLineCsv($USERS_CSV_FILE_PATH);
+    $studentName = $lastLineCsv[3];
+
+    $message = "Olá estudante {$studentName} 👋,<br> Como posso ajudar?";
     $sender = "bot";
 
     $GUID = generateGUID();
@@ -10,5 +13,5 @@
 
     $input = "{$GUID};{$current_time};{$sender};\"{$message}\";\n";
 
-    file_put_contents($MESSAGES_CSV_FILE_PATH, $input);
+    file_put_contents($MESSAGES_CSV_FILE_PATH, $input, LOCK_EX);
 ?>

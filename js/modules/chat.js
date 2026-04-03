@@ -1,6 +1,6 @@
 import ChatBot from "./chat-bot.js";
 import Config from "./../config/configs.js"
-import TextFormatting from "../utils/text-formatting.js";
+import TextFormatting from "./../utils/text-formatting.js";
 
 $(document).ready(function(){
   const $chatBox = $("#chat-box");
@@ -19,7 +19,7 @@ $(document).ready(function(){
   /**
    * Updates the ChatBox without reloading the page using AJAX.
    */
-  function refreshChatLog() {
+  async function refreshChatLog() {
     var scrollHeight = $chatBox.prop("scrollHeight");
 
     $.ajax({
@@ -29,6 +29,7 @@ $(document).ready(function(){
         // Converting whole chat csv to html
         var fullChatBox = convertChatCsvToHtml(html);
 
+        fullChatBox = TextFormatting.decode(fullChatBox);
         // Inserting the message log into the chatbox
         $chatBox.html(fullChatBox);
 
@@ -36,8 +37,7 @@ $(document).ready(function(){
         scrollChatToBottom(scrollHeight);
       },
     });
-
-    ChatBot.requestBotResponse();
+    await ChatBot.requestBotResponse();
   }
 
   /**
@@ -98,5 +98,5 @@ $(document).ready(function(){
     }
   }
 
-  setInterval(refreshChatLog, 500);
+  setInterval(refreshChatLog, 200);
 });

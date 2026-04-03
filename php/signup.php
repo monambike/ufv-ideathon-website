@@ -1,6 +1,6 @@
 <?php
-    include("config.php");
-    include("utils.php");
+    require_once("config.php");
+    require_once("utils.php");
 
     $name = htmlentities($_POST["name"]);
     $email = htmlentities($_POST["email"]);
@@ -12,6 +12,8 @@
     $login = "{$GUID};{$current_time};{$institution};{$name};{$email};\n";
 
     file_put_contents($USERS_CSV_FILE_PATH, $login, FILE_APPEND);
+
+    require_once("clear-messages.php");
 
     echo
     '<script>

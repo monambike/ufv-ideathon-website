@@ -78,15 +78,36 @@ export default class ChatBot {
   }
 
   static async chooseBotResponse(userInput) {
-    var optionExit = ["sair", "parar", "voltar", "menu", "home", "inicio"]
-    if (optionExit.includes(userInput)) {
-      await this.sendBotMessage("Olá estudante, Como posso ajudar?");
+    var options = [];
+    var responses = [];
+
+    responses = [
+      "Opa! Tudo bem? Como eu posso ajudar?",
+      "Olá! Como posso ajudar?",
+      "Olá! Tudo bem? Como posso ajudar?"
+    ]
+    var randomElement = responses[Math.floor(Math.random() * responses.length)];
+    options = ["oi", "ola", "tudo bem?", "oii"]
+    if (options.some(option => userInput.includes(option))) {
+      await this.sendBotMessage(randomElement);
       return;
     }
 
-    var optionPrime = ["identificar primos", "numeros primos", "numero primo", "primo", "primos"]
-    if (optionPrime.includes(userInput)) {
-      var slidePrimeNumbers = 'https://www.canva.com/design/DAGN8k2HU6s/N0-BSoZnXVZIxEUWa1CrPA/edit?utm_content=DAGN8k2HU6s&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton';
+    responses = [
+      "De nada! Se precisar de algo mais estou aqui para ajudar.",
+      "Imagina, qualquer coisa, se precisar de algo mais me avise!",
+      "De nada! Precisa de ajuda com algo mais?"
+    ]
+    var randomElement = responses[Math.floor(Math.random() * responses.length)];
+    options = ["obrigado", "obrigada", "valeu", "vlw", "obg"]
+    if (options.some(option => userInput.includes(option))) {
+      await this.sendBotMessage(randomElement);
+      return;
+    }
+
+    options = ["identificar primos", "numeros primos", "numero primo", "primo", "primos"]
+    if (options.some(option => userInput.includes(option))) {
+      var slidePrimeNumbers = '<a href=\'https://www.canva.com/design/DAGN8k2HU6s/N0-BSoZnXVZIxEUWa1CrPA/edit?utm_content=DAGN8k2HU6s&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton\' target="_blank" rel="noopener noreferrer">Slides de Números Primos</a>';
 
       await this.sendBotMessage(`Vou te enviar os slides para aprender sobre numeros primos! (Link: ${slidePrimeNumbers})`)
       window.open(slidePrimeNumbers, '_blank');
@@ -94,20 +115,20 @@ export default class ChatBot {
       return;
     }
 
-    var optionPrime = ["limpar chat", "limpar"]
-    if (optionPrime.includes(userInput)) {
+    options = ["limpar chat", "limpar"]
+    if (options.includes(userInput)) {
       this.clearMessageFile();
       return;
     }
 
-    var responses = [
+    responses = [
       "Não entendi, tente enviar algum comando disponível.",
       "Não consegui entender esse comando, tente um disponível.",
       "Tente algum comando existente.",
       "Não consegui entender.",
       "Esse comando não está disponível."
     ]
-    const randomElement = responses[Math.floor(Math.random() * responses.length)];
+    var randomElement = responses[Math.floor(Math.random() * responses.length)];
     await this.sendBotMessage(randomElement);
   }
 

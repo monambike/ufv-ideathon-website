@@ -10,4 +10,41 @@
 
         return $formatted_current_time;
     }
+
+    function getFileCsvAsJson($filePath) {
+      $file = fopen($filePath, 'r');
+      $data = [];
+
+      if ($file) {
+          flock($file, LOCK_SH);
+
+          while (($line = fgetcsv($file)) !== false) {
+              $data[] = $line;
+          }
+
+          flock($file, LOCK_UN);
+          fclose($file);
+      }
+
+      header('Content-Type: application/json');
+      echo json_encode($data);
+    }
+
+    function getLastLineCsv($filePath) {
+        $file = fopen($filePath, 'r');
+
+        if (!$file) return null;
+
+        flock($file, LOCK_SH);
+
+        $lastLine = null;
+        while (($line = fgetcsv($file, 0, ";", '"')) !== false) {
+            $lastLine = $line;
+        }
+
+        flock($file, LOCK_UN);
+        fclose($file);
+
+        return $lastLine;
+    }
 ?>
