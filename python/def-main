@@ -1,0 +1,26 @@
+def main():
+    while True:
+        user_input = input('What do you want to do today? ').lower()
+
+        if user_input not in options:
+            print('Invalid option. Try again.')
+            continue
+
+        if user_input == 'calculator':
+            n1 = float(input('Write one number: '))
+            op = input('Choose an operation: ')
+
+            if op == "sqrt":
+                result = calculator(n1, None, op)
+            else:
+                n2 = float(input('Write another number: '))
+                result = calculator(n1, n2, op)
+
+            print("Result:", result)
+        else:
+            print(options[user_input]())
+
+        p = input('Do you want to continue? (yes/no): ').lower()
+        if p != 'yes':
+            print('You finished your session!')
+            break
