@@ -1,6 +1,6 @@
 # UFV Ideathon Website
 
-A mathematic assistant for helping Brazilian institutions with their students at learning math. Made for Ideathon 2026 for UFV.
+A mathematic assistant for helping Brazilian institutions with their students at learning math. Made for Ideathon - Full Stack Minas 2026 for UFV.
 
 Focus on Brazilians institutions and students, expanding the good side of the impact AI on learning Math on those who can't afford expensive school books.
 
