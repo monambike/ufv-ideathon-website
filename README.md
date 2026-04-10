@@ -6,9 +6,9 @@ A mathematic assistant for helping institutions with their students at learning 
 
 # Screenshots
 
-<img width="1920" height="1080" src="https://github.com/user-attachments/assets/a2b31069-6300-4f96-a0bc-e4e7af1dffc4" />
+<img width="1920" height="1080" src="https://github.com/user-attachments/assets/7946ff12-0565-43f1-9042-049178e3929b" />
 
-<img width="1920" height="1080" src="https://github.com/user-attachments/assets/41f68730-4510-4265-9dcc-287c159b4e10" />
+<img width="1920" height="1080" src="https://github.com/user-attachments/assets/f022db81-1b02-42f3-910d-b3aa75e9bbbe" />
 
 # Project Members
 
