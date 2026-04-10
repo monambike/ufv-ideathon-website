@@ -2,9 +2,13 @@
 
 A mathematic assistant for helping institutions with their students at learning math. Made for Ideathon 2026 for UFV.
 
-<img width="1919" height="1079" alt="Screenshot 2026-04-02 214418" src="https://github.com/user-attachments/assets/a2b31069-6300-4f96-a0bc-e4e7af1dffc4" />
+<img width="1920" height="1080" src="https://github.com/user-attachments/assets/a8f6fc81-113e-4ebd-aef3-c5866488ccca" />
 
-<img width="1918" height="1079" alt="Screenshot 2026-04-02 214722" src="https://github.com/user-attachments/assets/41f68730-4510-4265-9dcc-287c159b4e10" />
+# Screenshots
+
+<img width="1920" height="1080" src="https://github.com/user-attachments/assets/a2b31069-6300-4f96-a0bc-e4e7af1dffc4" />
+
+<img width="1920" height="1080" src="https://github.com/user-attachments/assets/41f68730-4510-4265-9dcc-287c159b4e10" />
 
 # Project Members
 
