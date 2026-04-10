@@ -4,7 +4,7 @@ A mathematic assistant for helping Brazilian institutions with their students at
 
 Focus on Brazilians institutions and students, expanding the good side of the impact AI on learning Math on those who can't afford expensive school books.
 
-Also for those who can access books but find barriers due specific deficiencies, for example, people with daltonism, could find the same graphic translated to diverse range of necessities.
+Also for those who can access books but find barriers due specific deficiencies, for example, people with daltonism, could find the same graphic translated to a diverse range of necessities.
 
 All the content of the assistant would be curated by teachers, math specialists and accessibility specialists. All the data collected from the institutions would be used to enhance the app.
 
