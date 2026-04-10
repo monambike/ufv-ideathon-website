@@ -10,6 +10,8 @@ All the content of the assistant would be curated by teachers, math specialists 
 
 <img width="1920" height="1080" src="https://github.com/user-attachments/assets/a8f6fc81-113e-4ebd-aef3-c5866488ccca" />
 
+The app shares ideas from the app LearnFlow, but focused on the Brazilian educational market.
+
 # Screenshots
 
 <img width="1920" height="1080" src="https://github.com/user-attachments/assets/7946ff12-0565-43f1-9042-049178e3929b" />
