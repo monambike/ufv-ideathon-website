@@ -1,0 +1,33 @@
+Nosso protótipo idealiza:
+
+Assistente Matemática. Focada no Ensino Brasileiro
+- Funcionaria offline, limitada. Fallback no código pra IA presente no modo online
+- Online tem funções de acesso à internet e IA convencional, com + força em matemática
+
+Diferencial
+- Foco é MATEMÁTICA
+- Foco NA COLETA DE FEEDBACK MATEMÁTICA
+NA QUALIDADE DA RESPOSTA para MATEMÁTICA
+- Ensina matemática pensando na taxa de sucesso com ensinos anteriores
+- Acompanha instituições. Acompanhando crescimento dos professores e alunos
+- Foca no público brasileiro. Nas crianças, adolescentes. Estudantes de graduação com dificuldade. Professores sem muito material que precisam de apoio (motivo financeiro, institucional, etc)
+
+- Coleta de Feedback da taxa de sucesso de ensino feito pela IA (para a equipe de controle de qualidade)
+- A partir disso (desenvolvedores) conseguem implementar melhorias
+- Desenvolvimento também contaria com apoio de formados em matemática profissionais para apoio. Formados em licenciatura e bacharelado.
+
+Criar uma Inteligência Artificial
+- Público brasileiro tem um desgaste maior nas matérias de matemática
+- Evasão Escolar
+
+- Estrutura própria
+- Também conta com apoio e ferramentas de APIs e IAs existentes
+
+IDEIAS ESTRUTURAIS
+- Progressive Web App
+- Feito com electron (usa desktop e web)
+Permitindo acessibilidade e disponibilidade
+
+ADENDOS
+- Criiar módulos de suporte e extensão para pessoas com deficiência
+  - Problemas cognitivos, auditivos, visuais, etc..

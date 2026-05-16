@@ -1,0 +1,28 @@
+input: input() in python requested by code
+html: textbox data sent in html form by user
+
+js:
+  CALL PY
+py:
+  hits: inputX
+  EXIT PROGRAM & RETURN DATA "inputX"
+js:
+  # shows just returned inputs
+  user inputs: htmlX
+  CALL PY send "inputX + htmlX"
+py:
+  # processing previous statement calcs
+  # hit next "inputY"
+  EXIT PROGRAM & RETURN DATA "inputX + htmlX + inputY"
+js:
+  # shows just returned inputs
+  user_input: htmlY
+  CALL PY send "inputX + htmlX + inputY + htmlY"
+py:
+  # processing previous statement calcs
+  # hit next "inputY"
+  EXIT PROGRAM & RETURN DATA "inputX + htmlX + inputY + htmlY + inputZ"
+js:
+  # shows just returned inputs
+  user_input: htmlY
+  CALL PY send "inputX + htmlX + inputY + htmlY + inputY + htmlY + inputZ"
